@@ -2,18 +2,18 @@ import pprint
 eplPowerScore={}
 """
 Calculate EPL strength of schedule """
-f = open("Matches.txt","r")
-m = open("Table.txt","r")
-
-table = {}
-Lines = m.readlines()
-gamesPlayed=6
-for line in Lines:
-    terms = line.split()
-    table[terms[0]]=int(terms[1])
-print(table)
-team_schedule={}
-match_list= f.readlines()
+with open("Matches.txt","r") as f:
+    with open("Table.txt","r") as m:
+        
+        table = {}
+        Lines = m.readlines()
+    gamesPlayed=6
+    for line in Lines:
+        terms = line.split()
+        table[terms[0]]=int(terms[1])
+    print(table)
+    team_schedule={}
+    match_list= f.readlines()
 for match in match_list:
     terms = match.split()
     team_schedule[terms[0]]=0
@@ -24,17 +24,17 @@ eplPowerScore={}
 Calculate Nfl strength of schedule """
 for key in team_schedule:
     eplPowerScore[key] = team_schedule[key]+table[key]
-m1 = open("Standings.txt","r")
-teams = m1.readlines()
-nflTable={}
-teamNetYdsPerPA={}
-for line in teams:
-    terms = line.split()
-    nflTable[terms[0]]=int(terms[1])
-    teamNetYdsPerPA[terms[0]]=float(terms[2])
-#print(nflTable)
-m1 = open("Games.txt","r")
-teams = m1.readlines()
+with open("Standings.txt","r") as m1:
+    teams = m1.readlines()
+    nflTable={}
+    teamNetYdsPerPA={}
+    for line in teams:
+        terms = line.split()
+        nflTable[terms[0]]=int(terms[1])
+        teamNetYdsPerPA[terms[0]]=float(terms[2])
+    #print(nflTable)
+    m1 = open("Games.txt","r")
+    teams = m1.readlines()
 nflSchedule={}
 nflScheduleNetYDS={}
 for line in teams:
